@@ -7,7 +7,7 @@ interface IStandardBEP20 is IERC20 {
     /**
      * @dev Returns the cap on the token's total supply.
      */
-    function totalSupply() external view returns (uint256);
+    function cap() external view returns (uint256);
 
     /**
      * @dev Returns the cap on the token's total supply.
