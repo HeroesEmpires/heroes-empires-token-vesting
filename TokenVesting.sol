@@ -55,7 +55,7 @@ contract TokenVesting is Ownable {
     /**
      * @dev Set first day token listing on exchange for vesting process
      */
-    function setTokenListingDate(uint256 _tokenListingDate) public onlyOwner {
+    function setTokenListingDate(uint256 _tokenListingDate) external onlyOwner {
         require(
             _tokenListingDate >= block.timestamp,
             "Token listing must be in future date"
@@ -83,7 +83,7 @@ contract TokenVesting is Ownable {
         uint256 _duration,
         uint256 _upfrontAmount,
         uint256 _interval
-    ) public onlyOwner {
+    ) external onlyOwner {
         require(
             _beneficiary != address(0),
             "The beneficiary's address cannot be 0"
@@ -241,7 +241,7 @@ contract TokenVesting is Ownable {
     /**
      * @dev Release vested tokens to a all beneficiaries.
      */
-    function releaseBeneficiaryTokens() public onlyOwner {
+    function releaseBeneficiaryTokens() external onlyOwner {
         // Get current vesting beneficiaries
         uint256 beneficiariesCount = beneficiaryAddresses.length;
         for (uint256 i = 0; i < beneficiariesCount; i++) {
@@ -266,7 +266,7 @@ contract TokenVesting is Ownable {
     /**
      * @dev Release vested tokens to current beneficiary.
      */
-    function releaseMyTokens() public onlyBeneficiaries {
+    function releaseMyTokens() external onlyBeneficiaries {
         // Calculate the releasable amount
         (
             ,
